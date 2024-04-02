@@ -1,7 +1,7 @@
 # dsa
 dsa problems collection
 
-List of problems
+## List of problems
 
 # Problem of the day
 02 Apr 2024  :  Minimum Absolute Difference In BST
