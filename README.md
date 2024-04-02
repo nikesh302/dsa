@@ -7,4 +7,5 @@ dsa problems collection
 
 
 ## Top 50 Array Problems
-1. 
+1. Cyclically rotate an array by one
+
