@@ -54,3 +54,46 @@ class Solution {
     // The space complexity of both methods is O(N), where N is the number of nodes in the tree, 
     // because we use an additional list to store the inorder traversal, which can contain up to N elements.
 }
+
+
+//-------------- Approach 2 --------------//
+class Solution {
+    
+    // Method to find the minimum absolute difference between any two nodes in a binary search tree
+    public int minAbsoluteDifference(Node root) {
+        int[] current = {Integer.MAX_VALUE}; // Store the current node's value during traversal
+        int[] minDiff = {Integer.MAX_VALUE}; // Store the minimum absolute difference
+        
+        inorderTraversal(root, current, minDiff); // Perform inorder traversal
+        
+        return minDiff[0]; // Return the minimum absolute difference
+    }
+    
+    // Helper method to perform inorder traversal of the binary search tree
+    private void inorderTraversal(Node node, int[] current, int[] minDiff) {
+        if (node == null) {
+            return;
+        }
+        
+        // Traverse left subtree
+        inorderTraversal(node.left, current, minDiff);
+        
+        // Calculate absolute difference between current node and previous node
+        minDiff[0] = Math.min(minDiff[0], Math.abs(current[0] - node.data));
+        
+        // Update current node value
+        current[0] = node.data;
+        
+        // Traverse right subtree
+        inorderTraversal(node.right, current, minDiff);
+    }
+    
+    // Time Complexity Analysis: O(N)
+    // The time complexity of the minAbsoluteDifference method is O(N), where N is the number of nodes in the tree, 
+    // because we perform an inorder traversal of the entire tree.
+    // The time complexity of the inorderTraversal helper method is also O(N), where N is the number of nodes in the tree, 
+    // because we visit each node exactly once.
+    
+    // Space Complexity Analysis: O(1)
+    // The space complexity of both methods is O(1), because we only use a constant amount of extra space for the arrays.
+}
